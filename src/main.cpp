@@ -144,7 +144,7 @@ int main (int argc, char * const argv[]) {
 					previous = current;
 				} while(!endFound);
 				
-				std::string linePreview = singleStatement.substr(0, 7);
+				std::string linePreview = singleStatement.substr(0, 40);
 				std::string::iterator newEnd = std::remove_if(linePreview.begin(), linePreview.end(), isNewLine);
 				linePreview.resize(std::distance(linePreview.begin(), newEnd));
 				
