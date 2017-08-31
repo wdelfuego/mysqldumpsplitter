@@ -3,19 +3,19 @@ MySQLDump Splitter
 
 Splits mysqldump output to files of any maximum size. Keeps syntax correct, even when using extended inserts.
 
-##What is it?
+## What is it?
 
 A short piece of C++ that will split an SQL file created by mysqldump into several smaller files of configurable maximum size, while keeping the SQL syntax correct. This supports multiple insert syntax, so it can split a single insert with lots of rows into two separate insert queries each with their own set of rows.
 
 May work on other dialects than MySQL, but that's untested. Please let us know if you find that it works (or doesn't)!
 
-##Why we built it
+## Why we built it
 
 To split really large SQL files into smaller ones that could be handled more easily.
 
 We are never storing so many BLOBs in a single MySQL database again :).
 
-##Compiling
+## Compiling
 Pre-compiled binaries can be found in /bin, and are currently supplied for the following platforms:
 
 - OS X
@@ -25,7 +25,7 @@ If a pre-compiled binary for your platform is not available, you must compile it
 * Makefile is supplied
 * SQLSplitter.xcodeproj is an XCode project for those who like that, you won't need it for compiling.
 
-##Usage
+## Usage
 Make sure the compiled file (in our case, 'sqlsplitter') is executable ('chmod +x sqlsplitter'), then run the following single command:
 
     ./sqlsplitter input_filename max_output_filesize_in_bytes
@@ -36,7 +36,7 @@ For example, to split `dump.sql` into files of 1MB each:
 
 Which will result in a list of files named `[00001]dump.sql`, `[00002]dump.sql`, et cetera.
 
-##Can I help?
+## Can I help?
 Yes! We'd be glad to receive pre-compiled versions that are tested on other platforms.
 Put them in a clearly named folder in /bin and send us a pull request.
 
@@ -49,7 +49,7 @@ The code works but can be extended in quite some ways, here are some features th
 * Tested support for more SQL dialects (currently the only known supported format is MySQL).
 * Support for human-readable file size input (`1M` versus `1048576`)
 
-##License
+## License
 
 This code is licensed under the MIT License.
 
