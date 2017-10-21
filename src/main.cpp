@@ -74,7 +74,7 @@ int main (int argc, char * const argv[]) {
 		}
 	} else if(argc < 3){
 		//Inform herp-derp user of his sins committed.
-		std::cout << "Herp derp! Usage: " << argv[0] << " <sqldump to parse> <maximum packet size>\n";
+		std::cout << "Oops! Usage: " << argv[0] << " <input file> <maximum output file size in bytes>\n";
 		return kReturnBadArguments;
 	} else {
 		//Parse arguments
@@ -87,7 +87,7 @@ int main (int argc, char * const argv[]) {
 	
 	sqlFile.open(inputFilePath.c_str(), std::ifstream::binary);
 	if(!sqlFile){
-		std::cerr << "Can't open file(" << inputFilePath << ") for reading\n";
+		std::cerr << "Can't open file (" << inputFilePath << ") for reading\n";
 		return kReturnCanNotOpen;
 	} else {
 		//std::cout << "File has been opened for reading\n";
@@ -96,7 +96,7 @@ int main (int argc, char * const argv[]) {
 	std::string inputFileName(inputFilePath, inputFilePath.find_last_of('/')+1);
 	
 	std::cout << 
-	"Good to go! Will split (" << inputFilePath << " to a maximum of " << maxByteSize << " bytes" <<
+	"Good to go! Will split (" << inputFilePath << " to separate files with a maximum size of " << maxByteSize << " bytes" <<
 	std::endl;
 	
 #pragma mark Split it!
@@ -110,10 +110,10 @@ int main (int argc, char * const argv[]) {
 		//Open output file
 		std::ofstream currentOutputFile(outputFilename.c_str(), std::ofstream::binary);
 		if(!currentOutputFile){
-			std::cerr << "Fatal: Failed to open(" << outputFilename << ") for writing" << std::endl;
+			std::cerr << "Fatal: Failed to open (" << outputFilename << ") for writing" << std::endl;
 			return kReturnCanNotOpenForWrite;
 		} else {
-			std::cout << "Will write part[" << partCount << "] to " << outputFilename << std::endl;
+			std::cout << "Will write part [" << partCount << "] to " << outputFilename << std::endl;
 		}
 		
 		//Fetch the new statement, prepare block of statements to be written
@@ -153,7 +153,7 @@ int main (int argc, char * const argv[]) {
 			
 			if(singleStatement.length() > maxByteSize){
 				std::cerr << 
-				"Fatal: Smallest statement is bigger(" << singleStatement.length() << ") than given bytesize(" << maxByteSize << ")";
+				"Fatal: Smallest statement is bigger (" << singleStatement.length() << ") than given bytesize (" << maxByteSize << ")";
 				std::cout << singleStatement;
 				return kReturnMaxByteSizeExceeded;
 			}
