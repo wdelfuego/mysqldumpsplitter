@@ -79,7 +79,7 @@ int main (int argc, char * const argv[]) {
 	} else {
 		//Parse arguments
 		inputFilePath = argv[1];
-		maxByteSize = atoi(argv[2]);
+		maxByteSize = atol(argv[2]);
 		if(argc >= 4){
 			outputBarWidth = atoi(argv[3]);
 		}
