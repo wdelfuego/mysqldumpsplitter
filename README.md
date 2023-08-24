@@ -20,11 +20,9 @@ We are never storing so many BLOBs in a single MySQL database again :).
 
 ## Compiling
 
-Pre-compiled binaries can be found in /bin, and are currently supplied for the following platforms:
+A pre-compiled binary for Apple Silicon (M1/M2) can be found in /bin/arm (thanks, @Rvervuurt!).
 
-- OS X
-
-If a pre-compiled binary for your platform is not available, you must compile it yourself.
+To run on a different platform, you must compile it yourself.
 The required files are in /src:
 
 - main.cpp is the source code
